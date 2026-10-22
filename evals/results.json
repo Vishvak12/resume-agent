@@ -1,0 +1,360 @@
+{
+  "summary": {
+    "bad_cases": 18,
+    "caught": 15,
+    "recall": 0.833,
+    "good_cases": 12,
+    "false_positive_cases": 0,
+    "by_code": {
+      "ESCALATION_WORD": {
+        "expected": 3,
+        "caught": 3
+      },
+      "UNIT_MISMATCH": {
+        "expected": 1,
+        "caught": 1
+      },
+      "SKILL_UNSUPPORTED": {
+        "expected": 2,
+        "caught": 2
+      },
+      "SKILLS_GENERIC": {
+        "expected": 1,
+        "caught": 1
+      },
+      "NUMBER_UNSUPPORTED": {
+        "expected": 3,
+        "caught": 3
+      },
+      "SCOPE_VIOLATION": {
+        "expected": 1,
+        "caught": 1
+      },
+      "ENTAILMENT": {
+        "expected": 3,
+        "caught": 0
+      },
+      "CITATION_MISSING": {
+        "expected": 1,
+        "caught": 1
+      },
+      "FACT_NOT_VERIFIED": {
+        "expected": 1,
+        "caught": 1
+      },
+      "FIELD_MISMATCH": {
+        "expected": 2,
+        "caught": 2
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "daily-agents",
+      "origin": "tailor added an escalation word (\"daily\") to the summary",
+      "expect": [
+        "ESCALATION_WORD"
+      ],
+      "got": [
+        "ESCALATION_WORD"
+      ],
+      "messages": [
+        "ESCALATION_WORD: 'daily' needs a fact with attribute daily"
+      ]
+    },
+    {
+      "id": "production-rag",
+      "origin": "tailor added an escalation word (\"production\")",
+      "expect": [
+        "ESCALATION_WORD"
+      ],
+      "got": [
+        "ESCALATION_WORD"
+      ],
+      "messages": [
+        "ESCALATION_WORD: 'production' needs a fact with attribute production"
+      ]
+    },
+    {
+      "id": "carriers-vs-invoices",
+      "origin": "unit swapped in a hyphenated count (fact counts invoices, bullet says carriers)",
+      "expect": [
+        "UNIT_MISMATCH"
+      ],
+      "got": [
+        "UNIT_MISMATCH"
+      ],
+      "messages": [
+        "UNIT_MISMATCH: 812 'carrier' \u2014 fact says 812 invoices"
+      ]
+    },
+    {
+      "id": "tensorflow-swap",
+      "origin": "user asked to swap in a framework the fact doesn't list",
+      "expect": [
+        "SKILL_UNSUPPORTED"
+      ],
+      "got": [
+        "SKILL_UNSUPPORTED"
+      ],
+      "messages": [
+        "SKILL_UNSUPPORTED: TensorFlow is not in the cited facts"
+      ]
+    },
+    {
+      "id": "flask-rejected-story",
+      "origin": "rejected story reused (technologies not in the cited fact)",
+      "expect": [
+        "SKILL_UNSUPPORTED"
+      ],
+      "got": [
+        "SKILL_UNSUPPORTED"
+      ],
+      "messages": [
+        "SKILL_UNSUPPORTED: Flask is not in the cited facts",
+        "SKILL_UNSUPPORTED: Google Vision API is not in the cited facts"
+      ]
+    },
+    {
+      "id": "programming-language",
+      "origin": "generic word in the Languages line (resume from another tool)",
+      "expect": [
+        "SKILLS_GENERIC"
+      ],
+      "got": [
+        "SKILLS_GENERIC"
+      ],
+      "messages": [
+        "SKILLS_GENERIC: 'Programming' is a generic term, not a skill"
+      ]
+    },
+    {
+      "id": "eight-invoices",
+      "origin": "invented count in a hyphenated number (\"8-invoice\" vs confirmed 410+)",
+      "expect": [
+        "NUMBER_UNSUPPORTED"
+      ],
+      "got": [
+        "NUMBER_UNSUPPORTED"
+      ],
+      "messages": [
+        "NUMBER_UNSUPPORTED: '8' is not a metric of the cited facts"
+      ]
+    },
+    {
+      "id": "sota-claim",
+      "origin": "escalation word (\"state-of-the-art\") sourced only to the candidate's own report",
+      "expect": [
+        "ESCALATION_WORD"
+      ],
+      "got": [
+        "ESCALATION_WORD"
+      ],
+      "messages": [
+        "ESCALATION_WORD: 'state-of-the-art' needs a fact with attribute sota"
+      ]
+    },
+    {
+      "id": "azure-deployed",
+      "origin": "scope violation (dev-testing-only cloud tool described as deployed)",
+      "expect": [
+        "SCOPE_VIOLATION"
+      ],
+      "got": [
+        "SCOPE_VIOLATION"
+      ],
+      "messages": [
+        "SCOPE_VIOLATION: Azure is scoped; found ['deployed']"
+      ]
+    },
+    {
+      "id": "invented-detail",
+      "origin": "tailor invented a consequence of the bug",
+      "expect": [
+        "ENTAILMENT"
+      ],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "ml-pipelines",
+      "origin": "validation pipeline relabeled as \"ML pipelines\"",
+      "expect": [
+        "ENTAILMENT"
+      ],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "wrong-title",
+      "origin": "wrong job title for the person the work was presented to",
+      "expect": [
+        "ENTAILMENT"
+      ],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "uncited",
+      "origin": "synthetic",
+      "expect": [
+        "CITATION_MISSING"
+      ],
+      "got": [
+        "CITATION_MISSING"
+      ],
+      "messages": [
+        "CITATION_MISSING: bullet cites no fact IDs"
+      ]
+    },
+    {
+      "id": "unconfirmed-java",
+      "origin": "unconfirmed skill cited",
+      "expect": [
+        "FACT_NOT_VERIFIED"
+      ],
+      "got": [
+        "FACT_NOT_VERIFIED"
+      ],
+      "messages": [
+        "FACT_NOT_VERIFIED: UNC-JAVA is unconfirmed"
+      ]
+    },
+    {
+      "id": "wrong-dates",
+      "origin": "wrong employment dates",
+      "expect": [
+        "FIELD_MISMATCH"
+      ],
+      "got": [
+        "FIELD_MISMATCH"
+      ],
+      "messages": [
+        "FIELD_MISMATCH: 'Jan 2023 \u2013 Mar 2023' \u2260 profile 'Jun 2025 \u2013 Sep 2025'"
+      ]
+    },
+    {
+      "id": "wrong-gpa",
+      "origin": "wrong GPA",
+      "expect": [
+        "FIELD_MISMATCH"
+      ],
+      "got": [
+        "FIELD_MISMATCH"
+      ],
+      "messages": [
+        "FIELD_MISMATCH: 3.41/4 \u2260 3.62/4"
+      ]
+    },
+    {
+      "id": "ninety-seven-unsourced",
+      "origin": "metric with no source in the profile",
+      "expect": [
+        "NUMBER_UNSUPPORTED"
+      ],
+      "got": [
+        "NUMBER_UNSUPPORTED"
+      ],
+      "messages": [
+        "NUMBER_UNSUPPORTED: '97%' is not a metric of the cited facts"
+      ]
+    },
+    {
+      "id": "six-of-six",
+      "origin": "self-referential stability check presented as recall (fraction)",
+      "expect": [
+        "NUMBER_UNSUPPORTED"
+      ],
+      "got": [
+        "NUMBER_UNSUPPORTED"
+      ],
+      "messages": [
+        "NUMBER_UNSUPPORTED: '6/6': ['6', '6'] not in the cited facts"
+      ]
+    },
+    {
+      "id": "good-eta",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-rag",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-nlp",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-address-match",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-pick-path",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-invoice",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-ddqn",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-ensemble",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-azure",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-schema",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-skills",
+      "origin": "",
+      "expect": [],
+      "got": [],
+      "messages": []
+    },
+    {
+      "id": "good-summary-credential",
+      "origin": "refactor \u2014 summary credential sentence needs a citable fact",
+      "expect": [],
+      "got": [],
+      "messages": []
+    }
+  ]
+}

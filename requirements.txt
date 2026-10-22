@@ -1,0 +1,3 @@
+pyyaml
+pytest
+mcp>=2.3,<3

@@ -1,0 +1,138 @@
+# Checker eval cases. Bad cases are real failures from tailoring sessions (Oct 2026), rewritten
+# onto a fictional candidate (evals/profile.yaml) with the same failure mechanism.
+# expect: [] means the bullet is correct and should produce no issues.
+- id: daily-agents
+  origin: tailor added an escalation word ("daily") to the summary
+  text: Work daily with coding agents (Claude Code, Codex).
+  facts: [AI-TOOLS]
+  expect: [ESCALATION_WORD]
+- id: production-rag
+  origin: tailor added an escalation word ("production")
+  text: Built production retrieval systems for contract search with FastAPI and BM25.
+  facts: [NOVA-RAG]
+  expect: [ESCALATION_WORD]
+- id: carriers-vs-invoices
+  origin: unit swapped in a hyphenated count (fact counts invoices, bullet says carriers)
+  text: Flagged overbilled freight invoices from 12,416-feature, 812-carrier billing data.
+  facts: [INV-XGB]
+  expect: [UNIT_MISMATCH]
+- id: tensorflow-swap
+  origin: user asked to swap in a framework the fact doesn't list
+  text: Trained the reinforcement learning policy in TensorFlow.
+  facts: [HTL-RL]
+  expect: [SKILL_UNSUPPORTED]
+- id: flask-rejected-story
+  origin: rejected story reused (technologies not in the cited fact)
+  text: Built a Flask backend with Google Vision API for shipping-label scanning.
+  facts: [KES-MATCH]
+  expect: [SKILL_UNSUPPORTED]
+- id: programming-language
+  origin: generic word in the Languages line (resume from another tool)
+  skills: [[Languages, "Python, Programming, JavaScript"]]
+  expect: [SKILLS_GENERIC]
+- id: eight-invoices
+  origin: invented count in a hyphenated number ("8-invoice" vs confirmed 410+)
+  text: Validated the entity-linking pipeline against an 8-invoice confusion-matrix acceptance gate.
+  facts: [NOVA-NLP]
+  expect: [NUMBER_UNSUPPORTED]
+- id: sota-claim
+  origin: escalation word ("state-of-the-art") sourced only to the candidate's own report
+  text: Reached state-of-the-art 88.41% test accuracy on carrier billing audits.
+  facts: [INV-XGB]
+  expect: [ESCALATION_WORD]
+- id: azure-deployed
+  origin: scope violation (dev-testing-only cloud tool described as deployed)
+  text: Deployed backend services on Azure.
+  facts: [NOVA-AZURE]
+  expect: [SCOPE_VIOLATION]
+- id: invented-detail
+  origin: tailor invented a consequence of the bug
+  text: Debugged Neo4j concurrent write races that dropped lane-rate updates under parallel ingestion.
+  facts: [NOVA-NEO4J]
+  expect: [ENTAILMENT]
+- id: ml-pipelines
+  origin: validation pipeline relabeled as "ML pipelines"
+  text: Shipped ML pipelines on AWS serving 340+ active dispatchers.
+  facts: [NOVA-BACKEND, NOVA-DEPLOY]
+  expect: [ENTAILMENT]
+- id: wrong-title
+  origin: wrong job title for the person the work was presented to
+  text: Explained the system to the partner carrier's VP of freight analytics.
+  facts: [NOVA-PRESENT]
+  expect: [ENTAILMENT]
+- id: uncited
+  origin: synthetic
+  text: Built scalable distributed systems.
+  expect: [CITATION_MISSING]
+- id: unconfirmed-java
+  origin: unconfirmed skill cited
+  text: Wrote backend microservices in Java.
+  facts: [UNC-JAVA]
+  expect: [FACT_NOT_VERIFIED]
+- id: wrong-dates
+  origin: wrong employment dates
+  experience: [{org: Novaport Logistics, role: Data Platform Engineering Intern, dates: "Jan 2023 – Mar 2023", bullets: []}]
+  expect: [FIELD_MISMATCH]
+- id: wrong-gpa
+  origin: wrong GPA
+  education: [{school: "Westbridge University, School of Engineering", dates: "Sep 2025 – Dec 2026", degree: "Master of Science, Operations Research (GPA: 3.41/4)"}]
+  expect: [FIELD_MISMATCH]
+- id: ninety-seven-unsourced
+  origin: metric with no source in the profile
+  text: Achieved 97% clause recall on dispute audits with hybrid BM25 and dense retrieval.
+  facts: [NOVA-RAG]
+  expect: [NUMBER_UNSUPPORTED]
+- id: six-of-six
+  origin: self-referential stability check presented as recall (fraction)
+  text: Reached 6/6 clause recall on dispute audits with hybrid retrieval.
+  facts: [NOVA-RAG]
+  expect: [NUMBER_UNSUPPORTED]
+# ---- good bullets (should be clean) ----
+- id: good-eta
+  text: Exposed train/test leakage inflation (acc@1 0.910 to 0.587) by rebuilding the evaluation on 8,214 held-out shipments, cutting on-time loads wrongly flagged late from 19.4% to 11.2%.
+  facts: [NOVA-ETA]
+  expect: []
+- id: good-rag
+  text: Built evidence-grounded contract retrieval fusing BM25 and Hugging Face dense-embedding retrieval with Reciprocal Rank Fusion, served through a FastAPI REST endpoint.
+  facts: [NOVA-RAG]
+  expect: []
+- id: good-nlp
+  text: Validated an NLP entity-linking pipeline against 410+ labeled invoices with custom recall-weighted scoring (spaCy, carrier-registry matching).
+  facts: [NOVA-NLP]
+  expect: []
+- id: good-address-match
+  text: Powered address matching in a production React Native driver app by building a Node.js backend, with FAISS vector similarity matching across large address catalogs.
+  facts: [KES-MATCH]
+  expect: []
+- id: good-pick-path
+  text: Reached ~84% route-completion accuracy for a Zone-4 pick-path agent by building a Gymnasium warehouse simulation environment and training a policy in PyTorch and CUDA.
+  facts: [HTL-RL]
+  expect: []
+- id: good-invoice
+  text: Reached 88.41% test accuracy and 0.861 macro F1 on 12,416 features and 812 invoices with GPU-accelerated XGBoost sweeps.
+  facts: [INV-XGB]
+  expect: []
+- id: good-ddqn
+  text: Improved average return 17% over 400 episodes with Double DQN in PyTorch for dock-door scheduling, reducing Q-value overestimation across 20 training runs.
+  facts: [DOCK-DDQN]
+  expect: []
+- id: good-ensemble
+  text: Achieved 94.7% accuracy on a parcel-damage photo dataset with an ensemble of 3 ResNet-18-based CNNs in PyTorch.
+  facts: [PKG-ENS]
+  expect: []
+- id: good-azure
+  text: Used Azure for development and testing of the backend services.
+  facts: [NOVA-AZURE]
+  expect: []
+- id: good-schema
+  text: Designed a normalized 5-tier PostgreSQL schema for yard-slot bookings with JSONB metadata, using transactional SHA-256 commits and SQL window functions.
+  facts: [DOCK-DB]
+  expect: []
+- id: good-skills
+  skills: [[Languages, "Python, TypeScript, SQL"], [Cloud, "AWS (S3, EC2), Docker"]]
+  expect: []
+- id: good-summary-credential
+  origin: refactor — summary credential sentence needs a citable fact
+  text: MS Operations Research student at Westbridge (graduating Dec 2026) with a 3.62 GPA.
+  facts: [EDU-WB]
+  expect: []

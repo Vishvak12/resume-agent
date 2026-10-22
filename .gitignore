@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Your real profile and generated resumes stay local
+profile/facts.yaml
+*.docx
+*.pdf
+.env
+credentials.json
+token.json

@@ -1,0 +1,52 @@
+# Test fixture: fictional candidate (same as evals/profile.yaml), trimmed to what the tests cite.
+positions:
+  - {org: Novaport Logistics, role: Data Platform Engineering Intern, location: "Chicago, IL", dates: "Jun 2025 – Sep 2025"}
+  - {org: Kestrel Fleet, role: Backend Engineering Intern, location: "Austin, TX", dates: "Jan 2024 – Apr 2024"}
+education:
+  - {school: "Westbridge University, School of Engineering", degree: "Master of Science, Operations Research", dates: "Sep 2025 – Dec 2026", gpa: "3.62/4"}
+skills: [Python, SQL, TypeScript, pandas]
+facts:
+  - id: NOVA-RAG
+    entity: Novaport Logistics
+    text: Evidence-grounded RAG pipeline over carrier contracts with hybrid BM25 + dense retrieval fused via RRF, served via FastAPI
+    status: verified
+    metrics: [{value: 97, unit: "%", what: clause recall on dispute audits}]
+    skills: [RAG, BM25, Hugging Face, Reciprocal Rank Fusion, FastAPI]
+  - id: NOVA-NLP
+    entity: Novaport Logistics
+    text: NLP entity-linking pipeline validated against 410+ labeled invoices
+    status: verified
+    metrics: [{value: 410, unit: "+", what: labeled invoices}]
+    skills: [spaCy]
+  - id: NOVA-AZURE
+    entity: Novaport Logistics
+    text: Used Azure for dev testing
+    status: verified
+    skills: [Azure]
+    scope: {skill: Azure, forbid: [deployed, deployment, production, hosted]}
+  - id: KES-MATCH
+    entity: Kestrel Fleet
+    text: Node.js backend with FAISS vector search for a production React Native driver app
+    status: verified
+    skills: [Node.js, FAISS, React Native]
+    attributes: {production: true}
+  - id: INV-XGB
+    entity: Invoice audit project
+    text: XGBoost pipeline on carrier billing data
+    status: verified
+    metrics:
+      - {value: 88.41, unit: "%", what: test accuracy}
+      - {value: 0.861, unit: "", what: macro F1}
+      - {value: 12416, unit: "", what: features}
+      - {value: 812, unit: "", what: invoices}
+    skills: [XGBoost, Python]
+  - id: JAVA-X
+    entity: skills
+    text: Java (claimed on old resumes)
+    status: unconfirmed
+    skills: [Java]
+  - id: KES-FLASK
+    entity: Kestrel Fleet
+    text: Flask backend with Google Vision API (old story)
+    status: rejected
+    skills: [Flask, Google Vision API]

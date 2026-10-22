@@ -1,0 +1,2 @@
+{"servers": {"resume-agent": {"type": "stdio", "command": "python",
+  "args": ["-m", "resume_agent.mcp_server"]}}}

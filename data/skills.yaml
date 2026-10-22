@@ -1,0 +1,58 @@
+# Curated skill dictionary: canonical name, type, aliases.
+# type: language | framework | tool | concept | generic
+# case_sensitive: true for words that are also ordinary English (Go, R, Swift, Spring, Rust).
+- {canonical: Python, type: language}
+- {canonical: Java, type: language}
+- {canonical: JavaScript, type: language, aliases: [JS]}
+- {canonical: TypeScript, type: language, aliases: [TS]}
+- {canonical: SQL, type: language}
+- {canonical: C++, type: language}
+- {canonical: Go, type: language, aliases: [Golang], case_sensitive: true}
+- {canonical: Rust, type: language, case_sensitive: true}
+- {canonical: Swift, type: language, case_sensitive: true}
+- {canonical: R, type: language, case_sensitive: true}
+- {canonical: PyTorch, type: framework}
+- {canonical: TensorFlow, type: framework, aliases: [Keras]}
+- {canonical: XGBoost, type: framework}
+- {canonical: Hugging Face, type: framework, aliases: [HuggingFace, Hugging Face Transformers]}
+- {canonical: spaCy, type: framework}
+- {canonical: FastAPI, type: framework}
+- {canonical: Flask, type: framework}
+- {canonical: Spring, type: framework, aliases: [Spring Boot], case_sensitive: true}
+- {canonical: React, type: framework, aliases: [React.js, ReactJS]}
+- {canonical: React Native, type: framework}
+- {canonical: Node.js, type: framework, aliases: [NodeJS]}
+- {canonical: GraphQL, type: framework}
+- {canonical: LangChain, type: framework}
+- {canonical: pandas, type: framework}
+- {canonical: OpenCV, type: framework}
+- {canonical: Librosa, type: framework}
+- {canonical: PyBullet, type: framework}
+- {canonical: OpenAI Gymnasium, type: framework, aliases: [Gymnasium]}
+- {canonical: FAISS, type: tool}
+- {canonical: Docker, type: tool}
+- {canonical: Kubernetes, type: tool, aliases: [K8s]}
+- {canonical: AWS, type: tool, aliases: [Amazon Web Services]}
+- {canonical: AWS S3, type: tool, aliases: [S3]}
+- {canonical: AWS EC2, type: tool, aliases: [EC2]}
+- {canonical: Azure, type: tool, aliases: [Microsoft Azure]}
+- {canonical: Google Vision API, type: tool}
+- {canonical: PostgreSQL, type: tool, aliases: [Postgres]}
+- {canonical: MongoDB, type: tool}
+- {canonical: Neo4j, type: tool}
+- {canonical: GitHub Actions, type: tool}
+- {canonical: CUDA, type: tool}
+- {canonical: Claude Code, type: tool}
+- {canonical: Codex, type: tool}
+- {canonical: RAG, type: concept, aliases: [retrieval-augmented generation]}
+- {canonical: BM25, type: concept}
+- {canonical: Reciprocal Rank Fusion, type: concept, aliases: [RRF]}
+- {canonical: CI/CD, type: concept}
+- {canonical: programming, type: generic, aliases: [coding, software development, backend software development, backend development, problem solving, external API integration]}
+- {canonical: REST APIs, type: concept, aliases: [REST API, RESTful APIs, REST]}
+- {canonical: API design, type: concept}
+- {canonical: pytest, type: tool}
+- {canonical: Linux, type: tool}
+- {canonical: Git, type: tool}
+- {canonical: LLM evaluation, type: concept, aliases: [LLM evals]}
+- {canonical: reinforcement learning, type: concept, aliases: [RL]}

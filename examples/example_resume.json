@@ -1,0 +1,13 @@
+{
+ "name": "JANE DOE",
+ "contact": "jane@example.com | github.com/janedoe",
+ "experience": [
+  {"org": "Acme Analytics", "role": "Software Engineering Intern", "location": "Remote", "dates": "Jun 2025 – Aug 2025",
+   "bullets": [
+    {"text": "Cut report latency 35% for 1,200 customers by adding per-account caching to a FastAPI service on AWS EC2.", "facts": ["ACME-CACHE", "ACME-API"]},
+    {"text": "Deployed the reporting service to production on Azure.", "facts": ["ACME-AZURE"]},
+    {"text": "Wrote backend services in Java.", "facts": ["UNC-JAVA"]}
+   ]}
+ ],
+ "skills": [["Languages", "Python, SQL"], ["Cloud", "AWS (EC2), Docker"]]
+}

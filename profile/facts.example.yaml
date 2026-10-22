@@ -1,0 +1,30 @@
+# Example profile. Copy to profile/facts.yaml (git-ignored) and replace with your own facts.
+positions:
+  - {org: Acme Analytics, role: Software Engineering Intern, location: "Remote", dates: "Jun 2025 – Aug 2025"}
+education:
+  - {school: "State University", degree: "Master of Science, Computer Science", dates: "Sep 2024 – May 2026", gpa: "3.8/4"}
+skills: [Python, SQL, Docker]
+facts:
+  - id: ACME-API
+    entity: Acme Analytics
+    text: Built a FastAPI service exposing usage reports to 1,200 customers, deployed on AWS EC2
+    status: verified
+    metrics: [{value: 1200, unit: "", what: customers}]
+    skills: [FastAPI, Python, AWS, AWS EC2]
+  - id: ACME-CACHE
+    entity: Acme Analytics
+    text: Added per-account caching that cut report latency 35%
+    status: verified
+    metrics: [{value: 35, unit: "%", what: report latency reduction}]
+    skills: [Python]
+  - id: ACME-AZURE
+    entity: Acme Analytics
+    text: Used Azure for load testing only
+    status: verified
+    skills: [Azure]
+    scope: {skill: Azure, forbid: [deployed, deployment, production]}
+  - id: UNC-JAVA
+    entity: skills
+    text: Java (listed on an old resume, never confirmed)
+    status: unconfirmed
+    skills: [Java]

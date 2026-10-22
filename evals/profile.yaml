@@ -1,0 +1,235 @@
+# Eval-only profile: the facts the eval cases cite (resume-level text, no contact details).
+# Fictional candidate (Morgan Vale, logistics). Companies, school, dates and metrics are invented.
+positions:
+- org: Novaport Logistics
+  role: Data Platform Engineering Intern
+  location: Chicago, IL
+  dates: Jun 2025 – Sep 2025
+- org: Kestrel Fleet
+  role: Backend Engineering Intern
+  location: Austin, TX
+  dates: Jan 2024 – Apr 2024
+- org: Harrow Transit Lab
+  role: Operations Research Intern
+  location: Columbus, OH
+  dates: Jun 2023 – Aug 2023
+education:
+- school: Westbridge University, School of Engineering
+  degree: Master of Science, Operations Research
+  dates: Sep 2025 – Dec 2026
+  gpa: 3.62/4
+- school: Calder State University
+  degree: Bachelor of Science, Industrial Engineering
+  dates: Aug 2020 – May 2024
+  gpa: 3.58/4
+skills:
+- Python
+- SQL
+- TypeScript
+- JavaScript
+- pandas
+- Git
+- Docker
+- GitHub Actions
+- CI/CD
+- pytest
+- Linux
+facts:
+- id: EDU-WB
+  entity: Westbridge University
+  text: MS Operations Research student at Westbridge University, graduating Dec 2026, GPA 3.62/4
+  status: verified
+  metrics:
+  - value: 3.62
+    unit: ''
+    what: GPA
+- id: NOVA-BACKEND
+  entity: Novaport Logistics
+  text: GraphQL backend and automated validation pipeline for shipment-tracking data serving 340+ active dispatchers
+  status: verified
+  metrics:
+  - value: 340
+    unit: +
+    what: active dispatchers
+  skills:
+  - GraphQL
+  - Python
+- id: NOVA-DEPLOY
+  entity: Novaport Logistics
+  text: Deployed on AWS (S3, EC2); MongoDB as the database
+  status: verified
+  skills:
+  - AWS
+  - AWS S3
+  - AWS EC2
+  - MongoDB
+- id: NOVA-AZURE
+  entity: Novaport Logistics
+  text: Used Azure for dev testing
+  status: verified
+  skills:
+  - Azure
+  scope:
+    skill: Azure
+    forbid:
+    - deployed
+    - deployment
+    - production
+    - hosted
+    - hosting
+- id: NOVA-NLP
+  entity: Novaport Logistics
+  text: NLP entity-linking pipeline with spaCy and custom recall-weighted scoring, matching carrier names on freight invoices to carrier-registry IDs; validated against 410+ labeled invoices; reduced manual reconciliation effort
+  status: verified
+  metrics:
+  - value: 410
+    unit: +
+    what: labeled invoices
+  skills:
+  - spaCy
+  - Python
+- id: NOVA-RAG
+  entity: Novaport Logistics
+  text: Evidence-grounded RAG pipeline over carrier contracts answering rate-dispute questions (e.g. fuel-surcharge clauses) only when a contract clause supports the answer, citing the exact supporting sentence and
+    dropping unsupported claims; hybrid BM25 + Hugging Face dense retrieval fused with RRF; served via FastAPI REST endpoint
+  status: verified
+  skills:
+  - RAG
+  - BM25
+  - Hugging Face
+  - Reciprocal Rank Fusion
+  - FastAPI
+  - REST APIs
+- id: NOVA-NEO4J
+  entity: Novaport Logistics
+  text: Debugged and resolved Neo4j concurrency write races in the route-graph pipeline through edge-case testing
+  status: verified
+  skills:
+  - Neo4j
+- id: NOVA-PRESENT
+  entity: Novaport Logistics
+  text: Explained work to founders, shippers, dispatch managers, and a partner carrier's Head of Freight Analytics using slide decks and the Novaport dashboard
+  status: verified
+- id: NOVA-ETA
+  entity: Novaport Logistics
+  text: Rebuilt delivery-ETA evaluation on held-out shipments exposing train/test leakage inflation; route-length-calibrated late-flag thresholds
+  status: verified
+  metrics:
+  - value: 8214
+    unit: ''
+    what: held-out shipments
+  - value: 0.91
+    unit: ''
+    what: acc@1 leaked split
+  - value: 0.587
+    unit: ''
+    what: acc@1 held-out
+  - value: 19.4
+    unit: '%'
+    what: on-time loads wrongly flagged late before
+  - value: 11.2
+    unit: '%'
+    what: on-time loads wrongly flagged late after
+  skills:
+  - Python
+- id: KES-MATCH
+  entity: Kestrel Fleet
+  text: Node.js backend for stop upload, retrieval, and address-match orchestration powering a production React Native driver app; FAISS vector similarity across large address catalogs
+  status: verified
+  skills:
+  - Node.js
+  - FAISS
+  - React Native
+  - JavaScript
+  attributes:
+    production: true
+- id: HTL-RL
+  entity: Harrow Transit Lab
+  text: Multi-zone Gymnasium warehouse simulation environment; convolutional-MLP RL policy for pick-path routing in PyTorch and CUDA; transfer-learning pipeline
+  status: verified
+  metrics:
+  - value: 84
+    unit: '%'
+    what: route-completion accuracy
+  - value: 1.6
+    unit: ''
+    what: validation loss
+  skills:
+  - PyTorch
+  - CUDA
+  - OpenAI Gymnasium
+  - reinforcement learning
+- id: INV-XGB
+  entity: Invoice audit project
+  text: XGBoost classifier flagging overbilled freight invoices on carrier billing data with GPU-accelerated sweeps on the university HPC cluster
+  status: verified
+  metrics:
+  - value: 88.41
+    unit: '%'
+    what: test accuracy
+  - value: 0.861
+    unit: ''
+    what: macro F1
+  - value: 12416
+    unit: ''
+    what: features
+  - value: 812
+    unit: ''
+    what: invoices
+  skills:
+  - XGBoost
+  - Python
+  - CUDA
+- id: DOCK-DB
+  entity: Dockyard
+  text: Normalized 5-tier PostgreSQL schema for yard-slot bookings with JSONB metadata, transactional SHA-256 commits, SQL window functions
+  status: verified
+  metrics:
+  - value: 5
+    unit: ''
+    what: tier relational schema
+  skills:
+  - PostgreSQL
+  - SQL
+- id: DOCK-DDQN
+  entity: Dock scheduling project
+  text: Double DQN in PyTorch for dock-door scheduling with replay buffers, target-network updates, reward shaping
+  status: verified
+  metrics:
+  - value: 17
+    unit: '%'
+    what: average return improvement
+  - value: 400
+    unit: ''
+    what: episodes
+  - value: 20
+    unit: ''
+    what: training runs
+  skills:
+  - PyTorch
+- id: PKG-ENS
+  entity: Parcel damage project
+  text: Ensemble of 3 ResNet-18-based CNNs with L2 weight decay and Dropout on a parcel-damage photo dataset
+  status: verified
+  metrics:
+  - value: 94.7
+    unit: '%'
+    what: accuracy
+  - value: 3
+    unit: ''
+    what: ResNet-18-based CNN models
+  skills:
+  - PyTorch
+- id: AI-TOOLS
+  entity: tools
+  text: Uses Claude Code and Codex across the SDLC (design, testing, deployment)
+  status: verified
+  skills:
+  - Claude Code
+  - Codex
+- id: UNC-JAVA
+  entity: skills
+  text: Java
+  status: unconfirmed
+  skills:
+  - Java
